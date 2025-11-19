@@ -8,25 +8,38 @@ int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
 
-    int day=0, month=0, year=0, prueba1=0, prueba2=0, prueba3=0;
+    int day, month, year;
 
-    cout << "Ingresa una fecha con números en el orden día mes año" << endl;
+    cout << "Ingresa una fecha con números en el orden día (1 - 31), mes (1 - 12) y año" << endl;
     cin >> day >> month >> year;
 
-    prueba1 = year%4;
-    prueba2 = year%100;
-    prueba3 = year%400;
+    if ( day < 1 || day > 31){
+        cout << "Inexistente, coloque un día del 1 al 31";
+        return 0;
+    }
+
+    if ( month < 1 || month > 12){
+        cout << "Inexistente, coloque un mes del 1 al 12";
+        return 0;
+    }
+
+    if ( year < 0){
+        cout << "Inexistente, coloque un año a partir del 0";
+        return 0;
+    }
 
     switch (month){
-        case (1): 
-            if (day > 31){
-               cout << "Inexistente, Enero sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
+        case 1: 
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (day <= 31) cout << "Fecha correcta!";
         break;
-        case (2): 
-            if (day == 29 && (prueba1 == 0 || (prueba2 == 0 && prueba3 == 0))){
+        case 2: 
+            if (day == 29 && (year%400 == 0 || (year%4 == 0 && year%100 != 0))){
                 cout << "Fecha correcta!";
             } else if (day == 29){
                 cout << "Inexistente, no es año bisiesto.";
@@ -36,75 +49,12 @@ int main() {
                 cout << "Fecha correcta!";
             }
         break;
-        case (3): 
-            if (day > 31){
-                cout << "Inexistente, Marzo sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (4): 
-            if (day > 30){
-                cout << "Inexistente, Abril sólo tiene 30 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (5):
-            if (day > 31){
-                cout << "Inexistente, Mayo sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";;
-            }
-        break;
-        case (6): 
-            if (day > 30){
-                cout << "Inexistente, Junio sólo tiene 30 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (7): 
-            if (day > 31){
-                cout << "Inexistente, Julio sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (8): 
-            if (day > 31){
-                cout << "Inexistente, Agosto sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (9): 
-            if (day > 30){
-                cout << "Inexistente, Septiembre sólo tiene 30 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (10): 
-            if (day > 31){
-                cout << "Inexistente, Octubre sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (11): 
-            if (day > 30){
-                cout << "Inexistente, Noviembre sólo tiene 30 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
-        break;
-        case (12): 
-            if (day > 31){
-                cout << "Inexistente, Diciembre sólo tiene 31 días.";
-            } else {
-                cout << "Fecha correcta!";
-            }
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (day <= 30) cout << "Fecha correcta!";
+            else cout << "Este mes sólo tienen 30 días";
         break;
         default: cout << "Inexistente, coloca el mes con un número del 1 al 12, por favor.";
     }

@@ -2,16 +2,17 @@
 
 #include <iostream>
 #include <windows.h>
+#include <cmath>
 using namespace std;
 
 int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
 
-    int opcion = 0, calculo = 1;
-    float numero1 = 0.00f, numero2 = 0.00f, suma = 0.00f, resta = 0.00f, division = 0.00f, multiplicacion = 0.00f;
+    int opcion = 0;
+    float numero1 = 0.00f, numero2 = 0.00f, suma = 0.00f, resta = 0.00f, division = 0.00f, multiplicacion = 0.00f, potencia;
 
-    cout << "¿Qué operación deseas realizar?\n 1.- suma\n 2.- resta\n 3.- multiplicación\n 4.- división" << endl;
+    cout << "¿Qué operación deseas realizar?\n 1.- suma\n 2.- resta\n 3.- multiplicación\n 4.- división\n 5.- potencia" << endl;
     cin >> opcion;
 
     switch (opcion)
@@ -47,6 +48,14 @@ int main() {
             cin >> numero2;
             division = numero1 / numero2;
             cout << "El resultado de la división es: " << division << endl;
+        break;
+        case 5:
+            cout << "Ingresa la base de la potencia: ";
+            cin >> numero1;
+            cout << "Ingresa el exponente: ";
+            cin >> numero2;
+            potencia = pow (numero1, numero2);
+            cout << "El resultado de la potencia es: " << potencia << endl;
         break;
         default:
             cout << "Opcion no válida";
