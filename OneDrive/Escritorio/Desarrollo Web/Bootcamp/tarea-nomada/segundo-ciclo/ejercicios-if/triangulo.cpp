@@ -17,8 +17,8 @@ int main() {
     cout << "Ingresa la medida en centímetros del tercer lado: ";
     cin >> lado3;
 
-    if (lado1<0 || lado2<0 || lado3<0){
-        cout << "Ingresa valores positivos." << endl;
+    if (lado1<=0 || lado2<=0 || lado3<=0){
+        cout << "Ingresa valores válidos." << endl;
         return 0;
     }
 

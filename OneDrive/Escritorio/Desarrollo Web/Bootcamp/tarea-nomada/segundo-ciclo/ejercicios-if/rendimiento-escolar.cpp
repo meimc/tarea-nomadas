@@ -14,12 +14,17 @@ int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
 
-    float promedio;
+    float promedio=0.00f;
 
     cout << "Ingresa tu promedio actual: ";
     cin >> promedio;
 
-    if (0>promedio>20) {
+    if (cin.fail()){
+        cout<<"Error: Ingresar un número.";
+        return 0;
+    }
+
+    if (0>promedio || promedio>20) {
         cout << "Información no válida, tu promedio debe estar entre el 0 y el 20." << endl;
         return 0;
     }

@@ -10,31 +10,33 @@ int main() {
 
     int hora, minutos, segundos;
 
-    cout << "Ingresa la hora del día 0-24: ";
+    cout << "Ingresa la hora del día 0-23: ";
     cin >> hora;
-    cout << "Ingresa los minutos 0-60: ";
+
+    cout << "Ingresa los minutos 0-59: ";
     cin >> minutos;
-    cout << "Ingresa los segundoss 0-60: ";
+
+    cout << "Ingresa los segundoss 0-59: ";
     cin >> segundos;
 
-    if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59 || segundos < 0 || segundos > 59) {
-        cout << "Hora invalida." << endl;
+    if (cin.fail() || (hora < 0 || hora > 23 || minutos < 0 || minutos > 59 || segundos < 0 || segundos > 59)){
+        cout<<"Error: Ingresar un número entero, positivo, dentro del rango.";
         return 0;
     }
 
     segundos++;
 
     if (segundos==60) {
-        segundos = 00;
+        segundos = 0;
         minutos++;
     }
 
     if (minutos==60){
-        minutos = 00;
+        minutos = 0;
         hora ++;
     }
 
-    if (hora==24) hora = 00;
+    if (hora==24) hora = 0;
 
     cout << "La hora al segundo siguientes es: " << hora << " : " << minutos << " : " << segundos << endl;
 
