@@ -34,16 +34,20 @@ int main() {
     switch (month)
     {
     case 2: 
-        if (bisiesto){
+        if (day>29){
+            if (bisiesto){
             cout << "Este mes sólo tiene 29 en bisiesto" << endl; 
-        } else cout << "Este mes sólo tiene 28 días" << endl; 
-        return 0;
+            } else cout << "Este mes sólo tiene 28 días" << endl; 
+            return 0;
+        }
     case 4: 
     case 5: 
     case 9: 
     case 11: 
-        cout << "Error: Este mes sólo tiene 30 días" << endl; 
-        return 0;
+        if (day>30){
+            cout << "Error: Este mes sólo tiene 30 días" << endl; 
+            return 0;
+        }
     }
 
     int diasPasados=0, diasDelAnio = bisiesto ? 366 : 365;
