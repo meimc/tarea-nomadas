@@ -12,10 +12,11 @@ function calculateWeight(gifts) {
         let weight = Number(prompt('¿Cuánto pesa el regalo No. '+ i + '? ')); 
         totalWeight += weight;
     } 
+    return totalWeight;
 } 
 
 let gifts = prompt('¿Cuántos regalos lleva Santa? '); 
 
 let result = calculateWeight(gifts); 
 
-console.log('El peso total de los regalos es de: ' + totalWeight);
+console.log('El peso total de los regalos es de: ' + result);
