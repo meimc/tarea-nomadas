@@ -10,20 +10,39 @@ Input: ["Cometa","Trueno"]
 Output: "false"
 */
 
+const prompt = require("prompt-sync")();
+
 function areAnagrams(s1, s2) {
-    let name = "";
+    s1 = s1.toLowerCase();
+    s2 = s2.toLowerCase();
 
-    if (s1.lenght!==s2.lenght) return "false";  
-
-    let checked = [];
-    for (let i=0; i<s2.lenght; i++){
-        checked[i] = false; 
+    if(s1.length != s2.length){
+        return false;
     }
 
-    for (let i=0; i<s1.lenght; i++){
-            name.push(s1(i));
-            for (let j=0; j<s2.lenght; j++){
+    let name = [];
+    for(let i=0; i<s2.length; i++){
+        name[i]=false;
+    }
 
+    for (let i=0; i<s1.length; i++){
+        let found = false;
+
+        for (let j=0; j<s2.length; j++){
+            if(s1[i]==s2[j] && name[j]==false){
+                name[j]=true;
+                found=true;
+                break;
             }
         }
+        if (found==false){
+            return false;
+        }
+    }
+    return true;
 }
+
+let nombreUno = prompt("Ingresa el nombre del primer reno: ");
+let nombreDos = prompt("Ingresa el nombre del segundo reno: ");
+
+console.log(areAnagrams(nombreUno, nombreDos));
