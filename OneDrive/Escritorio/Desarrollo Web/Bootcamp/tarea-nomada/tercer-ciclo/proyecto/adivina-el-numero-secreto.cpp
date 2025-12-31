@@ -34,49 +34,59 @@ Si el ciclo termina y no adivinó, muestra un mensaje de "Game Over" revelando 
 #include <ctime>
 using namespace std;
 
+const int MAX_INTENTOS = 5;
+
+void juego (int NUMERO_SECRETO);
+
+bool volverAJugar ();
+
 int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
+    
+    srand(time(0));
 
-    const int MAX_INTENTOS = 5;
-
-    int volverAJugar = 1;
-
-    while(volverAJugar==1){
-        srand(time(0));
+    do{
         const int NUMERO_SECRETO = rand() % 100 + 1;
-        //const int NUMERO_SECRETO = 85; //Prueba
-
-        cout << "-------------------------------------------\nAdivina el número del 1 al 100\n-------------------------------------------" << endl;
-
-        int intento;
-
-        for(int i=1; i<=MAX_INTENTOS; i++){
-            
-            cout << "Tienes "<< MAX_INTENTOS - i + 1 <<" oportunidades : ";
-            cin >> intento;
-
-            if(i==MAX_INTENTOS){
-                cout << "-------------------------------------------\nGAME OVER 💀\nEl número secreto era: " << NUMERO_SECRETO << "\n-------------------------------------------" << endl;
-                break;
-            }
-
-            if (NUMERO_SECRETO==intento){
-                cout << "-------------------------------------------\nFELICIDADES! GANASTE EL JUEGO. El número secreto era: " << NUMERO_SECRETO << "\n-------------------------------------------" << endl;
-                break;
-            }
-
-            if (NUMERO_SECRETO<intento){
-                cout << "El número secreto es menor." << endl;
-            }
-
-            if (NUMERO_SECRETO>intento){
-                cout << "El número secreto es mayor." << endl;
-            }           
-        }
-        cout << "¿Quieres volver a jugar?(ingresa 1 o 2)\n1.- Si\n2.- No" << endl;
-        cin >> volverAJugar;
-    }
+        juego (NUMERO_SECRETO);
+    }while(volverAJugar());
 
     return 0;
+}
+
+void juego (int NUMERO_SECRETO){
+    cout << "-------------------------------------------\nAdivina el número del 1 al 100\n-------------------------------------------" << endl;
+    int intento;
+    
+    for(int i=1; i<=MAX_INTENTOS; i++){
+            
+        cout << "Tienes "<< MAX_INTENTOS - i + 1 <<" oportunidades : ";
+        cin >> intento;
+
+        if(i==MAX_INTENTOS){
+            cout << "-------------------------------------------\nGAME OVER 💀\nEl número secreto era: " << NUMERO_SECRETO << "\n-------------------------------------------" << endl;
+            break;
+        }
+
+        if (NUMERO_SECRETO==intento){
+            cout << "-------------------------------------------\nFELICIDADES! GANASTE EL JUEGO. El número secreto era: " << NUMERO_SECRETO << "\n-------------------------------------------" << endl;
+            break;
+        }
+
+        if (NUMERO_SECRETO<intento){
+            cout << "El número secreto es menor." << endl;
+        }
+
+        if (NUMERO_SECRETO>intento){
+            cout << "El número secreto es mayor." << endl;
+        }           
+    }
+    
+}
+
+bool volverAJugar (){
+    int opcion;
+    cout << "¿Quieres volver a jugar?\n1.- Sí\n2.- No" << endl;
+    cin >> opcion;
+    return opcion==1;
 }
